@@ -75,6 +75,12 @@ public class CalculoTeste4 {
     }
 }
 ```
+| Método                                      | Descrição                                                                                   | Exemplo de Uso                                                                                                                                   |
+|---------------------------------------------|---------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| `reduce(BinaryOperator<T> accumulator)`    | Aplica uma função acumuladora associativa para reduzir os elementos da `Stream` a um único valor. | ```java<br>Stream<Integer> numbers = Stream.of(1, 2, 3, 4);<br>Integer result = numbers.reduce((a, b) -> a + b).orElse(0);  // Soma dos elementos``` |
+| `reduce(T identity, BinaryOperator<T> accumulator)` | Semelhante ao `reduce` anterior, mas com um valor inicial (identidade). | ```java<br>Stream<Integer> numbers = Stream.of(1, 2, 3, 4);<br>Integer result = numbers.reduce(0, (a, b) -> a + b);  // Soma com identidade inicial``` |
+| `max(Comparator<? super T> comparator)`     | Retorna o maior elemento da `Stream`, de acordo com o `Comparator`. O `BinaryOperator` pode ser utilizado internamente para comparação. | ```java<br>Stream<Integer> numbers = Stream.of(1, 2, 3, 4);<br>Optional<Integer> max = numbers.reduce((a, b) -> a > b ? a : b);<br>max.ifPresent(System.out::println);``` |
+
 
 ---
 
